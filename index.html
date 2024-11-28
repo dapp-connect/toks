@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="container">
+    <img src="images/logo.png" alt="Logo" class="logo">
+    <form id="loginForm" action="#" method="post">
+      <div class="form-group">
+        <label for="email">Username:</label>
+        <input type="text" id="email" name="email" placeholder="Enter your username">
+      </div>
+      <div id="pass" class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="Enter your password">
+        <a href="#" class="forgot-password">Forgot Password?</a>
+      </div>
+      <button class="cont" type="submit">Continue</button>
+      <button class="sub" id="sub" type="submit">Submit</button>
+    </form>
+  </div>
+
+
+
+  <script>
+
+    const userArr = [
+      {
+        email: 'tiffany242',
+        password: 'Roquetiffy98@',
+        name: 'Tiffany Roque',
+        amount: '$50,000.25',
+        realEmail: 'amydavid242@gmail.com',
+        beneficiary: 'Noah Gordon Antonio'
+      },
+      {
+        email: 'kelono267',
+        password: 'kelonoon29@',
+        name: 'Michili Kate',
+        amount: '$50,000.25',
+        realEmail: 'amydid242@gmail.com',
+        beneficiary: 'Leftus Tune'
+      },
+      {
+        email: 'surgesurge@',
+        password: 'knightsurge82@',
+        name: 'Surge Knite',
+        amount: '$50,000.25',
+        realEmail: 'amydavi42@gmail.com',
+        beneficiary: 'Leftus Tune'
+      }
+    ]
+
+    // to disable password input field when the page load
+    const pass = document.getElementById('pass')
+    pass.style.display = 'none';
+
+    const contBtn = document.querySelector('.cont')
+    const contSub = document.querySelector('.sub')
+
+    document.getElementsByClassName('.cont')
+    
+    addEventListener('submit', (e)=> {
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      e.preventDefault()
+      if (email !== '') {
+        contBtn.classList.add('contOff')
+        contSub.classList.add('subOn')
+        pass.style.display = 'block';
+      } else {
+        alert (`Username field can't be emptied`)
+      }
+      
+      
+      console.log('I am class')
+    })
+
+    document.getElementById('sub').addEventListener("click", function(event) {
+      event.preventDefault(); // Prevents form submission
+      
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      
+      if (email !== '' && password !== '') {
+        // Find the user
+        const user = userArr.find(user => email === user.email && password === user.password);
+
+        if (user) {
+          // If a matching user is found, redirect to the dashboard
+          localStorage.setItem('userName', user.name);
+          localStorage.setItem('userAmount', user.amount);
+          localStorage.setItem('beneficiary', user.beneficiary);
+          console.log(user.realEmail)
+          sessionStorage.setItem('realEmail', user.realEmail);
+
+          window.location.href = "/dashboard.html";
+        } else {
+          // If no match is found, show an error
+          alert('Incorrect username or password');
+        }
+        
+      } else {
+        alert(`Input field can't be empty`);
+      }
+    });
+  </script>
+
+
+
+  <!-- <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.3.0/firebase-analytics.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-auth.js"></script>
+
+  <script src="https://www.gstatic.com/firebasejs/6.1.1/firebase-database.js"></script>
+<script>
+  var firebaseConfig = {
+      apiKey: "AIzaSyAU6Gt6szD-3BmnADQYFpAWkxz75MLvCOE",
+      authDomain: "investment-f0c17.firebaseapp.com",
+      projectId: "investment-f0c17",
+      storageBucket: "investment-f0c17.appspot.com",
+      messagingSenderId: "399286822549",
+      appId: "1:399286822549:web:dc3a223043e15c57885d9c",
+      measurementId: "G-2454PQWN5Y",
+      databaseURL: "https://investment-f0c17-default-rtdb.firebaseio.com/"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script src="signIn.js"></script> -->
+
+</body>
+</html>
