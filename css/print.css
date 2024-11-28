@@ -1,0 +1,14 @@
+.contentwrapper, header, header.fixed,  article, section, article, section.inside, section.home, .liner {width: auto; position: static; left: 0; margin: 0px; background: none white; padding: 0; top:0; right: 0; bottom: 0; border:0  }
+.print {display: block;}
+.noprint {display: none;}
+
+aside, .search, nav, footer, .skipper, .toplinks, .sitesearch, #sitesearch, #hbbttn, .hb, .intbanner  {display: none !important;}
+
+a.homelink{position: relative; left: 0px; top: 0;float:left; }
+
+.visuallyhidden {clip: auto; height: auto; margin: 0; width: auto; position: static; }
+
+.content_rates_table, TABLE.table_builder {margin-bottom: 20px; width: 100%; border-collapse: collapse;}
+.content_rates_table th, .table_builder th { border-bottom: solid 3px black; }
+.content_rates_table td, .table_builder td {border-bottom: solid 2px black;}
+
