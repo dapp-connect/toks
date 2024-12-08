@@ -72,6 +72,16 @@ body {
     }
   }
 
+    .hidden {
+    display: none;
+  }
+  .fade {
+    display: none;
+    opacity: 0.5;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+
 
   /* dashboard */
   .mainDiv {
