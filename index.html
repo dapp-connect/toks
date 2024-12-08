@@ -23,6 +23,12 @@
       <button class="cont" type="submit">Continue</button>
       <button class="sub" id="sub" type="submit">Submit</button>
     </form>
+
+    <div id="otpSection" class="hidden">
+      <h3>Enter OTP</h3>
+      <input type="text" id="otpInput" placeholder="Enter OTP" maxlength="4">
+      <button id="verifyOtpButton">Verify OTP</button>
+  </div>
   </div>
 
 
@@ -79,6 +85,7 @@
       //   beneficiary: 'Sean Marlin'
       // }
     ]
+    const otp = ['0303', '3984', '4982', '3849', '4810', '9403', '3390', '3948']
 
     // to disable password input field when the page load
     const pass = document.getElementById('pass')
@@ -105,34 +112,41 @@
       console.log('I am class')
     })
 
-    document.getElementById('sub').addEventListener("click", function(event) {
-      event.preventDefault(); // Prevents form submission
-      
+    const loginForm = document.getElementById('loginForm')
+    const verifyOtpButton = document.getElementById('verifyOtpButton');
+
+    document.getElementById('sub').addEventListener('click', function (event) {
+      event.preventDefault();
+
       var email = document.getElementById("email").value;
       var password = document.getElementById("password").value;
-      
+
       if (email !== '' && password !== '') {
-        // Find the user
         const user = userArr.find(user => email === user.email && password === user.password);
 
         if (user) {
-          // If a matching user is found, redirect to the dashboard
-          localStorage.setItem('userName', user.name);
-          localStorage.setItem('userAmount', user.amount);
-          localStorage.setItem('beneficiary', user.beneficiary);
-          console.log(user.realEmail)
-          sessionStorage.setItem('realEmail', user.realEmail);
+          // Show the OTP section
+          loginForm.classList.add('fade');
+          otpSection.classList.remove('hidden'); 
 
-          window.location.href = "https://dapp-connect.github.io/toks/dashboard.html";
+          verifyOtpButton.addEventListener('click', () => {
+            const otpInputValue = otpInput.value.trim();
+            const foundOtp = otp.find(otpValue => otpValue === otpInputValue);
+
+            if (foundOtp) {
+              window.location.href = "/dashboard.html";
+            } else {
+              alert('Invalid OTP. Please try again.');
+            }
+          });
         } else {
-          // If no match is found, show an error
           alert('Incorrect username or password');
         }
-        
       } else {
         alert(`Input field can't be empty`);
       }
     });
+
   </script>
 
 
