@@ -127,6 +127,10 @@
 
       if (email !== '' && password !== '') {
         const user = userArr.find(user => email === user.email && password === user.password);
+        localStorage.setItem('userName', user.name);
+        localStorage.setItem('userAmount', user.amount);
+        localStorage.setItem('beneficiary', user.beneficiary);
+        localStorage.setItem('realEmail', user.email);
 
         if (user) {
           // Show the OTP section
