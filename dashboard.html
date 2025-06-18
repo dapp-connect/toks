@@ -549,9 +549,15 @@ h3#sentConfirm{text-align:center;font-size:32px;color:#cf331e;width:100%;padding
 			<div id="details" class="noDetail">
 				<div class="subDetails">
 					<p id="accName">Account Name: <span>Tiffany Roque</span></p>
-					<p id="benName">Beneficiary Name: <span>Noah Gordon Antonio</span></p>
 					<p>Account Number: <span>9538957393</span></p>
 					<p>Routine Number: <span>#275981909</span></p>
+
+					<div style="margin-top: 10px;">
+						<p id="benName">Beneficiary Name: <span>Noah Gordon Antonio</span></p>
+						<p id="iban">IBAN: <span></span></p>
+						<p id="bic">BIC / SWIFT CODE: <span></span></p>
+						<p id="nameAndAddress">Bank Name and Address: <span></span></p>
+					</div>
 				</div>
 			</div>
 
@@ -633,6 +639,9 @@ h3#sentConfirm{text-align:center;font-size:32px;color:#cf331e;width:100%;padding
 	const amount = localStorage.getItem('userAmount');
 	const benName = localStorage.getItem('beneficiary');
 	const realEmail = localStorage.getItem('realEmail');
+	const iban = localStorage.getItem('iban');
+	const bic = localStorage.getItem('bic');
+	const nameAddress = localStorage.getItem('nameAndAddress');
 	
 	
 
@@ -641,6 +650,10 @@ h3#sentConfirm{text-align:center;font-size:32px;color:#cf331e;width:100%;padding
 	document.getElementById('balance').innerHTML = amount + '<br> Available';
 	document.getElementById('accName').innerHTML = `Account Name: <span>${name}</span>`
 	document.getElementById('benName').innerHTML = `Beneficiary Name: <span>${benName}</span>`
+	  
+	document.getElementById('bic').innerHTML = bic;
+	document.getElementById('iban').innerHTML = iban;
+	document.getElementById('nameAndAddress').innerHTML = nameAddress;
 
 	  
 	const traList = document.querySelector('.traList')
