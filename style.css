@@ -178,9 +178,15 @@ body {
     color: #333;
   }
 
-  .subDetails p {
-    margin: 0;
-  }
+.subDetails p {
+  margin: 0;
+  font-weight: bold; /* All p text is bold */
+}
+
+.subDetails span {
+  font-weight: normal; /* All span text inside p is normal */
+}
+
 
   .subDetails span {
     font-weight: bold;
