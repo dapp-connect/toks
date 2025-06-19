@@ -167,6 +167,29 @@ body {
     right: 5%;
     padding: 7%;
   }
+
+  .subDetails {
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    line-height: 1.2;
+    gap: 6px;
+    width: 100%;
+    color: #333;
+  }
+
+  .subDetails p {
+    margin: 0;
+  }
+
+  .subDetails span {
+    font-weight: bold;
+  }
+
+  .bnkInfo {
+    margin-top: 20px;
+    color: green;
+  }
   .noDetail {
     display: none;
   }
