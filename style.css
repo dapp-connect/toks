@@ -190,6 +190,9 @@ body {
     margin-top: 20px;
     color: green;
   }
+.bnkInfo span {
+    font-weight: normal;
+}
   .noDetail {
     display: none;
   }
